@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "CartData";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+<style>
+    #ime {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<div style="width:1300px; padding-left:100px; padding-top:20px">
+    <div id="grid">
+    </div>
+</div>
+<br><br><br><br>
+<div style="margin-left:1000px">
+    <label>Total:</label>
+    <label style="font-family: 'HK Grotesk Medium';" id="totprise" onload="gettotal()"></label>.00$
+    <hr>
+    <a class="btn btn-primary" id="dis" href="http://localhost:56891/Customer/Checkout" target="_blank">Checkout</a>
+
+</div>
+<script>
+    $(document).ready(function () {
+        gettotal();
+            $("#grid").kendoGrid({
+                columns: [
+                    //{ field: "useralbumphoto_id", title: "Id", width: 10, type: "number" },
+                    //{ field: "useralbumphoto_photo", title: "Photo", width: 50, height: 50, type: "file" }
+                    { field: "useralbumphoto_photo", title: "Image", template: '<img id="ime" src="#=useralbumphoto_photo#">', width: 50 },
+                    { field: "useralbumphoto_name", title: "Name", width: 50, height: 25, type: "string" },
+                    //{ field: "useralbumphoto_artist", title: "Artist", width: 50, height: 25, type: "string" },
+                    //{ field: "album_categary",title:"Categary",width:50,height:25,type:"string" },
+                    { field: "useralbumphoto_prise", title: "Prise", width: 50, height: 25, format: "{0:c}" },
+                    { field: "cart_itemquantity", title: "Quantity", width: 50, template: '<input type="number" value="#:cart_itemquantity#" min="1" id="#=useralbumphoto_id#" onchange="myPrice(\'#=useralbumphoto_id#\',#:useralbumphoto_prise#)">' },
+                    {field: "Total", title: "Total", width: "50px",template: "<label id='tot_#=useralbumphoto_id#' >#:(useralbumphoto_prise*cart_itemquantity)#</label>"},
+                    { title: "Item Remove", width: 50, template: `<a style="btn btn-primary" href="http://localhost:56891/Customer/RemoveItem?photo_id=#:useralbumphoto_id#">Remove</a>` }
+                ],
+                dataSource: {
+                    //aggregate: [{ field: "useralbumphoto_prise", aggregate: "sum" },
+                    //],
+                    transport: {
+                        read: "/Customer/ListCartItem",
+                    },
+                    pageSizes: 3
+                },
+                pageable: {
+                    refresh: false,
+                    pageSizes: true,
+                    numeric: true,
+                    info: false,
+                    input: false
+
+                },
+                sortable: true,
+                width: 50,
+                scrollable: true,
+                navigatable: true,
+                selectable: true,
+                editable: false,
+                height: 300,
+            });
+        });
+        $("#numeric").kendoNumericTextBox();
+
+        function myPrice(id,pr) {
+            gettotal();
+            var x = document.getElementById(id).value;
+            var y = parseInt(x);
+            var obj = {
+                photo_id: id,
+                cart_itemquantity: y,
+            };
+            $.ajax({
+                url: "/Customer/UpdatePrise",
+                type: "POST",
+                data: JSON.stringify(obj),
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    $("#totprise").html(pr * y);
+                    $("#tot_" + id).html(pr * y);
+                }               
+            });
+            gettotal();
+        }
+       function gettotal()
+        {
+            $.ajax({
+                url: "/Customer/TotalPrise",
+                type: "get",
+                dataType: 'json',
+                success: function (result) {
+                    $("#totprise").html(result);
+                }
+            });
+       }
+
+</script>
+<br />
+

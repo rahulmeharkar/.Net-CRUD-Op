@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+<script src="~/Scripts/customer.js"></script>
+<div id="Div1">
+    <div id="example">
+        <div id="window"></div>
+            <div id="listView"></div>
+            <div id="pager" class="k-pager-wrap"></div>
+
+            <script type="text/x-kendo-template" id="template">
+                <div class="product">
+                    @*<img src="../content/web/foods/#= useralbumphoto_id #.jpg" alt="#: useralbumphoto_name # image" />*@
+                    <a href="javascript:void(0);" data-id="#:useralbumphoto_id#" onclick="viewDetails(this)">
+                        <img src="#=useralbumphoto_photo#" alt="#: useralbumphoto_name # image" />
+
+                        <h3>#:useralbumphoto_name#</h3>
+                        @*<p>#:useralbumphoto_prise#</p>*@
+                        <p>#:kendo.toString(useralbumphoto_prise, "c")#</p>
+                    </a>
+                        @*<a class="btn btn-primary" id="undo" href="http://localhost:56891/Customer/AddCart?photo_id=#:useralbumphoto_id#&prise=#:useralbumphoto_prise#">Add To cart</a>*@
+</div>
+            </script>
+            <script>
+                $(document).ready(function () {
+                    var dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: "http://localhost:56891/Customer/ListAllPhoto",
+                                dataType: "json",
+                                type: "Get"
+                            }
+                        },
+                        pageSize: 10,
+                    });
+                    $("#pager").kendoPager({
+                        dataSource: dataSource
+                    });
+
+                    $("#listView").kendoListView({
+                        dataSource: dataSource,
+                        template: kendo.template($("#template").html())
+                    });
+                });
+            </script>
+        <script type="text/x-kendo-template" id="imagedetails">
+            <input type="hidden" value="#:useralbumphoto_id#" id="hdnalbid" />
+            <input type="hidden" value="#:useralbumphoto_prise#" id="hdnprice" />
+            <div class="row">
+                <div class="col-6" id="addiamge">
+                    <img src="#:useralbumphoto_photo#" id="imgalbumb" alt="#:useralbumphoto_photo#" style="width:285px;height:285px;align-content:center" />
+                </div>
+                <div id="addiamge" class="col-6">
+                    <h3>
+                        <b>#:useralbumphoto_name#</b>
+                    </h3>
+                    <b>$<label id="lblimageamount">#:kendo.toString(useralbumphoto_prise)#</label></b>
+                    *<input id="txtQuantity" type="number" value="1" onchange="getTotal()" title="numeric" min="1" max="100" step="1">
+
+
+                    <hr />
+                    <b>$</b>
+                    <label id="lblTotalAmount">#:kendo.toString(useralbumphoto_prise) # </label>
+                    <br>
+                    <label id="success"></label>
+                    <br>
+                    <button type="button" id="btnAddCart" onclick="addCard()" class="k-button k-primary">Add Cart</button>
+                </div>
+            </div>
+        </script>
+        </div>
+
+</div>
+@*<div id="Div2">
+    <style>
+        #ime {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                columns: [
+                    //{ field: "useralbumphoto_id", title: "Id", width: 10, type: "number" },
+                    //{ field: "useralbumphoto_photo", title: "Photo", width: 50, height: 50, type: "file" }
+                    { field: "useralbumphoto_photo", title: "Image", template: '<img id="ime" src="#=useralbumphoto_photo#">', width: 50 },
+                    { field: "useralbumphoto_name", title: "Name", width: 50, height: 25, type: "string" },
+                    //{ field: "useralbumphoto_artist", title: "Artist", width: 50, height: 25, type: "string" },
+                    //{ field: "album_categary",title:"Categary",width:50,height:25,type:"string" },
+                    { field: "useralbumphoto_prise", title: "Prise", width: 50, height: 25, format: "{0:c}" },
+                    { field: "cart_itemquantity", title: "Quantity", width: 50, template: '<input type="number" value="#:cart_itemquantity#" min="1" id="#=useralbumphoto_id#" onchange="myPrice(\'#=useralbumphoto_id#\')">' },
+                    { title: "Item Remove", width: 50, template: `<a style="btn btn-primary" href="http://localhost:56891/Customer/RemoveItem?photo_id=#:useralbumphoto_id#">Remove</a>` }
+
+                ],
+                dataSource: {
+                    transport: {
+                        read: "/Customer/ListCartItem",
+                    },
+                    pageSizes: 3
+                },
+                pageable: {
+                    refresh: false,
+                    pageSizes: true,
+                    numeric: true,
+                    info: false,
+                    input: false
+
+                },
+                sortable: true,
+                width: 50,
+                scrollable: true,
+                navigatable: true,
+                selectable: true,
+                editable: false,
+                height: 500,
+            });
+            $("#edit").click(function (e) {
+
+            });
+            $("#delete").click(function (e) {
+
+            });
+        });
+    </script>
+    <br/>
+    
+    <div style="width:1300px; padding-left:100px; padding-top:20px">       
+        <div id="grid">
+                <a class="btn btn-primary" href="http://localhost:56891/Customer/Checkout" target="_blank">Checkout</a>
+                <p style="font-family: 'HK Grotesk Medium';" id="totprise">@ViewBag.totalprise.00$</p>     
+        </div>
+    </div>
+</div>*@

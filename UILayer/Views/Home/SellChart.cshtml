@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "SellChart";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<a href="/Home/SellDetail" class="btn btn-primary">Pai Chart</a>
+
+<div id="chartContainer1">
+    <div id="example">
+        <div class="box wide">
+            <div class="box-col">
+                <input id="baseUnitYears" name="baseUnit" type="radio" value="years" autocomplete="off" />
+                <label for="baseUnitYears">Years</label>
+
+                <input id="baseUnitMonths" name="baseUnit"
+                       type="radio" value="months" autocomplete="off" />
+                <label for="baseUnitMonths">Months</label>
+
+                <input id="baseUnitWeeks" name="baseUnit"
+                       type="radio" value="weeks" checked="checked" autocomplete="off" />
+                <label for="baseUnitWeeks">Weeks</label>
+
+                <input id="baseUnitDays" name="baseUnit"
+                       type="radio" value="days" autocomplete="off" />
+                <label for="baseUnitDays">Days</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section k-content wide">
+        <div id="linechart"></div>
+    </div>
+</div>
+
+
+<script>
+        function createChart() {
+            $("#linechart").kendoChart({
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "/Home/BarGraph",
+                            dataType: "json"
+                        }
+                    },
+                    schema: {
+                        model: {
+                            fields: {
+                                ship_date: { type: "date" },
+                            }
+                        }
+                    },
+                    sort: {
+                        field: "Date",
+                        dir: "asc"
+                    }
+                },
+                title: {
+                    text: "Sell of allbum Day Wise"
+                },
+                legend: {
+                    position: "bottam"
+                },
+                seriesDefaults: {
+                    type: "column"
+                },
+                series:
+                [{
+
+                    field: "total_prise",
+                    categoryField: "ship_date",
+                    name: "Total Sell",
+
+
+                }],
+                categoryAxis: {
+                    baseUnit: "weeks",
+                    labels: {
+                        dateFormats: {
+                            date: "dd-MM-yyyy"
+                        },
+                        //rotation: -90
+                    },
+                    majorGridLines: {
+                        visible: false
+                    }
+                },
+                valueAxis: {
+                    labels: {
+                        format: "N0"
+                    },
+                    majorUnit: 10000,
+                    line: {
+                        visible: false
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    ///template: "#= Sum #: #= kendo.parseDate(Date, 'MM/dd/yyyy') #",
+                    format: "N0"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+        $(".box").bind("change", refresh);
+
+        function refresh() {
+            var chart = $("#linechart").data("kendoChart"),
+                series = chart.options.series,
+                categoryAxis = chart.options.categoryAxis,
+                baseUnitInputs = $("input:radio[name=baseUnit]");
+
+            categoryAxis.baseUnit = baseUnitInputs.filter(":checked").val();
+
+            chart.refresh();
+        }
+</script>

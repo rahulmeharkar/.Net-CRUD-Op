@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+
+    <link href="~/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/css/font.css" rel="stylesheet" />
+
+    <link href="~/css/styleguide.css" rel="stylesheet" />
+    <link href="~/css/font.css" rel="stylesheet" />
+
+    <link href="~/css/login.css" rel="stylesheet" />
+    <link href="~/css/kendo.Yellow.css" rel="stylesheet" />
+
+
+
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/kendo.all.min.js"></script>
+</head>
+<body>
+    <div class="mt-container pd-0">
+        <aside class="login-left-wrapper">
+            <div class="logo-wrapper-l">
+                <span class="project-logo">
+                    <img src="~/images/logo.png" alt="casepoint logo" />
+                </span>
+            </div>
+            <div>
+                <div class="tagline">
+                    <label>Trusted.</label>
+                    <label>Technology.</label>
+                    <label>Together.</label>
+                </div>
+                <p class="brand-desc">Full eDiscovery capabilities. One powerful, secure, cloud-based platform.<br>Casepoint is smarter eDiscovery.</p>
+            </div>
+        </aside>
+        <div class="login-right-wrapper">
+            @RenderBody()
+        </div>
+        <div class="login-bot-links">
+            <!--                <label class="site-version">Version <span id="versionNo">2.0.1.132097</span></label>-->
+            <a role="link" class="text-muted" href="https://www.casepoint.com" target="_blank">Casepoint.com</a>
+            <span class="dot-separator"></span>
+            <a role="link" class="text-muted" href="https://www.casepoint.com/privacy-policy/" target="_blank">Privacy Policy</a>
+            <span class="dot-separator"></span>
+            <a role="link" class="text-muted" href="https://www.casepoint.com/privacy-shield-framework-certification/" target="_blank">Privacy Shield Framework</a>
+            <p class="text-muted">©Copyright 2020, <span>Casepoint. All rights reserved</span></p>
+        </div>
+    </div>
+
+
+</body>
+</html>

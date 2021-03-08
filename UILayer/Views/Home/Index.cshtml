@@ -1,0 +1,180 @@
+﻿@{  
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+    //Layout = null;
+}
+<style>
+    #ime {
+        width:100px;
+        height:150px;
+    }
+</style>
+@*<a class="btn btn-primary" href="http://localhost:56891/Home/EditPhoto?useralbumphoto_id=#:useralbumphoto_id#&useralbumphoto_name=#:useralbumphoto_name#&useralbumphoto_artist=#:useralbumphoto_artist#&useralbumphoto_prise=#:useralbumphoto_prise#&quantity=#:quantity#">Edit</a>*@
+@*<script>
+    $(document).ready(function () {
+        $("#grid").kendoGrid({
+            columns:[
+                { field: "useralbumphoto_id", title: "Id", width: 10},
+                //{ field: "useralbumphoto_photo", title: "Photo", width: 50, height: 50, type: "file" }
+                { field: "useralbumphoto_photo", title: "Image", template: '<img id="ime" src="#=useralbumphoto_photo#">', width: 50 },
+                { field: "useralbumphoto_name", title: "Name", width: 50,height:25},
+                { field: "useralbumphoto_artist", title: "Artist", width: 50, height: 25},
+                { field: "album_categary",title:"Categary",width:25,height:25},
+                { field: "useralbumphoto_prise", title: "Prise", width: 25, height: 25, format: "{0:c}" },
+                { field: "quantity", title: "Quantity", width: 25, height: 25},
+                { width: 50, template: `<a class="btn btn-primary" href="http://localhost:56891/Home/EditPhoto?photo_id=#:useralbumphoto_id#">Edit</a> <a class="btn btn-primary" href="http://localhost:56891/Home/DeletePhoto?photo_id=#:useralbumphoto_id#">Delete</a>` }
+            ],
+            dataSource:{
+                transport: {
+                    read: "/Home/ListAllPhoto",
+                },
+                pageSizes: 3
+            },
+            pageable: {
+                refresh:false,
+                pageSizes: true,
+                numeric: true,
+                info: false,
+                input:true
+            },
+            sortable: true,
+            width: 50,
+            scrollable: true,
+            navigatable: true,
+            selectable: true,
+            editable: true,
+            height:600
+        });
+        $("#edit").click(function (e)
+        {
+
+        });
+        $("#delete").click(function (e) {
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        //Alert window
+        $("#alertBtn").on("click", function () {
+            myalert("Record successfully updated");
+            function myalert(content) {
+                $("<div></div>").kendoAlert({
+                    title: false,
+                    content: content,
+                    buttonLayout: "normal"
+                }).data("kendoAlert").open();
+            }
+        });
+    });
+
+</script>
+<div style="width:1300px; padding-left:100px; padding-top:20px">
+    <div id="grid"></div>
+    </div>*@
+
+
+
+
+<a id="3" class="btn btn-primary" href="/Home/addPhoto"><i class="icon-plus"></i>Add new record</a>
+<div id="grid"></div>
+
+<script>
+        $(document).ready(function () {
+              dataSource = new kendo.data.DataSource({
+                transport: {
+                  read:  {
+                      url: "/Home/ListAllPhoto",
+                  },
+                  update: {
+                    url:"/Home/EditPhoto",
+                  },
+                  destroy: {
+                      url: "/Home/DeletePhoto",
+                  },
+                  create: {
+                      url: "/Home/addPhoto",
+                  },
+                  //parameterMap: function(options, operation) {
+                  //  if (operation !== "read" && options.models) {
+                  //    return {models: kendo.stringify(options.models)};
+                  //  }
+                  //}
+                },
+                batch: true,
+                pageSize: 3,
+                //schema: {
+                //  model: {
+                //      id: "useralbumphoto_id",
+                //    fields: {
+                //        useralbumphoto_id: { editable: false, nullable: true },
+                //        useralbumphoto_photo: {type: "file" ,validation: { required: true }},
+                //        useralbumphoto_name: { type: "text", validation: { required: true} },
+                //        useralbumphoto_artist: { type: "text" ,validation: { required: true}},
+                //        album_categary: { type: "text", validation: {required: true } },
+                //        useralbumphoto_prise: { type: "number", validation: { min: 100, required: true } }
+                //        //quantity: { type: "number", validation: { min: 1, required: true } }
+                //    }
+                //  }
+                //}
+              });
+
+          $("#grid").kendoGrid({
+            dataSource: dataSource,
+            pageable: true,
+            height: 550,
+            //toolbar: ["create"],
+            columns: [
+              { field: "useralbumphoto_id", title: "ID", width: 10 },
+              { field: "useralbumphoto_photo", title: "Image", template: '<img id="ime" src="#=useralbumphoto_photo#">', width: 50},
+              { field: "useralbumphoto_name", title: "Name", width: 50, height: 25 },
+              { field: "useralbumphoto_artist", title: "Artist", width: 50, height: 25},
+              { field: "album_categary", title: "Categary", width: 25, height: 25 },
+              { field: "useralbumphoto_prise", title: "Prise", width: 25, height: 25, format: "{0:c}" },
+              //{ field: "quantity", title: "Quantity", width: 25, height: 25 },
+              { width: 25, template: `<a class="btn btn-primary" href="http://localhost:56891/Home/EditPhoto?id=#:useralbumphoto_id#"><i class="icon-edit"></i> Edit</a>    <a class="btn btn-primary" href="http://localhost:56891/Home/DeletePhoto?photo_id=#:useralbumphoto_id#"><i class="icon-delete"></i>Delete</a>` }
+            ],
+            pageSizes: 3,
+            pageable: {
+                refresh: false,
+                pageSizes: true,
+                numeric: true,
+                info: true,
+                input: true
+            },
+            editable: "popup",
+            dataBound: onDataBound,
+            sortable: true,
+            width: 50,
+            scrollable: false,
+            navigatable: true,
+            selectable: true,
+            height: 600
+          });
+        });
+
+        function onDataBound() {
+          var grid = this;
+
+          grid.element.off('dblclick');
+
+          grid.element.on('dblclick','tbody tr[data-uid]',function (e) {
+            grid.editRow($(e.target).closest('tr'));
+          })
+        }
+        function customBoolEditor(container, options) {
+            var guid = kendo.guid();
+            $('<input class="k-checkbox" id="' + guid + '" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
+            $('<label class="k-checkbox-label" for="' + guid + '">​</label>').appendTo(container);
+        }
+</script>
+
+<style>
+    tbody tr:hover {
+        cursor: pointer;
+    }
+</style>
+
+
+

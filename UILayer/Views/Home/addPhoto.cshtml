@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "addPhoto";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        var products = $("#products").kendoDropDownList({
+            autoBind: false,
+            cascadeFrom: "categories",
+            optionLabel: "Select product...",
+            dataTextField: "album_categary",
+            dataValueField: "album_id",
+            change: onChange,
+            dataSource: {
+                type: "odata",
+                serverFiltering: false,
+                transport: {
+                    read: "http://localhost:56805/Home/GetCategary",
+                }
+            }
+        }).data("kendoDropDownList");
+    });
+</script>
+<style>
+#center1 {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+</style>
+<div class="mt-container pd-0" id="center1">
+    <div class="form-login">
+        <form action="/Home/addPhoto" method="post" enctype="multipart/form-data">
+            <h5 class="text-left">Add Photo</h5>
+            <div class="form-group">
+                <label for="useralbumphoto_photo"></label>
+                <input name="useralbumphoto_photo" class="files" type="file" aria-label="files" title="files"/>
+            </div>
+            <div class="form-group">
+                <label for="user_albumid">Album Category:</label>
+                <div class="form-group-content">
+                    <select id="SingleTagMultiselect" name="user_albumid" class="k-selectbox" style="width:100%;" data-placeholder="Select Category..." required>
+                        <option value=""></option>
+                        <option value="2">Food</option>
+                        <option value="3">Nature</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="useralbumphoto_artist">Artist Name:</label>
+                <div class="form-group-content">
+                    <input type="text" name="useralbumphoto_artist" class="k-textbox" placeholder="Rahul" title="textbox" required>
+                </div>
+            </div>
+            @*<div id="artist_name" class="form-group">
+                <input type="text" class="k-textbox" name="useralbumphoto_artist" placeholder="Artist Name" required>
+            </div>*@
+            <div class="form-group">
+                <label for="useralbumphoto_name">Photo Name:</label>
+                <div class="form-group-content">
+                    <input type="text" name="useralbumphoto_name" class="k-textbox" placeholder="Nature" title="textbox" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="useralbumphoto_prise">Prise:</label>
+                <div class="form-group-content">
+                    <input type="text" name="useralbumphoto_prise" class="k-textbox" placeholder="500" title="textbox" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <div class="form-group-content">
+                    <input type="text" name="quantity" class="k-textbox" placeholder="500" title="textbox" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Photo</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<script src="~/Scripts/AngularJsScript/addphoto.js"></script>
+<div class="mt-container pd-0">
+    <div class="form-login">
+        <form action="/Home/addPhoto" method="post">
+            <h5 class="text-left">Add Photo</h5>
+            <div class="form-group">
+                <input type="file" class="k-file" name="useralbumphoto_photo" required>
+            </div>
+            <div class="form-group" ng-controller="photocontroller" ng-init="GetCategary()">
+                <select name="user_albumid">
+                    <option value="">Select Album</option>
+                    <option ng-repeat="type in albumcategary" value="{{type.user_albumid}}">{{type.album_categary}}</option>
+                </select>
+            </div>
+            <div id="artist_name" class="form-group">
+                <input type="text" class="k-textbox" name="useralbumphoto_artist" placeholder="Artist Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="k-textbox" name="useralbumphoto_name" placeholder="Photo Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="k-numeric-wrap" name="useralbumphoto_prise" placeholder="Prise" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Photo</button>
+            </div>
+        </form>
+    </div>
+</div>*@

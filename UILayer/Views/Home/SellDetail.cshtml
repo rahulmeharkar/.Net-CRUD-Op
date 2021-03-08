@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "SellDetail";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<a href="/Home/SellChart" class="btn btn-primary">Bar Chart</a>
+<div id="example">
+    <div class="demo-section k-content wide">
+        <div id="chart" style="background: center no-repeat url('../content/shared/styles/world-map.png');"></div>
+    </div>
+    <script>
+        function createChart() {
+            $("#chart").kendoChart({
+                title: {
+                    position: "bottom",
+                    text: "Sell Of 2020 Album"
+                },
+                legend: {
+                    visible: false
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    labels: {
+                        visible: true,
+                        background: "transparent",
+                        template: "#= category #: \n #= value#%"
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    startAngle: 150,
+                    data: [{
+                        category: "Food Unsold",
+                        value: @ViewBag.avg2,
+                        color: "#9de219"
+                    },{
+                        category: "Food Sold",
+                        value: @ViewBag.avgsell2,
+                        color: "#90cc38"
+                    },{
+                        category: "Nature Unsold",
+                        value: @ViewBag.avg3,
+                        color: "#068c35"
+                    },{
+                        category: "Nature Sold",
+                        value: @ViewBag.avgsell3,
+                        color: "#006634"
+                    }]
+                }],
+                tooltip: {
+                    visible: true,
+                    format: "{0}%"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+    </script>
+</div>

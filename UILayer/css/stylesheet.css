@@ -1,0 +1,609 @@
+﻿
+.jobround {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.completed-jobround {
+    background-color: #35c47d;
+}
+
+.company-photo {
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    height: 28px;
+    overflow: hidden;
+    min-width: 40px;
+}
+
+.rotate90 {
+    transform: rotate(90deg);
+}
+
+.ml-8 {
+    margin-left: 8px !important;
+}
+
+.action-checkbox {
+    padding-right: 0;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+
+.user-photo {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #dcdfe5;
+    background-size: 32px 35px;
+    background-position: center center;
+    vertical-align: middle;
+    line-height: 40px;
+    float: left;
+    overflow: hidden;
+    min-width: 40px;
+}
+
+    .user-photo img {
+        border-radius: 3px;
+    }
+
+    .user-photo span {
+        color: #003145;
+        display: block;
+        font-family: 'HK Grotesk Medium', sans-serif;
+        text-align: center;
+    }
+
+.user-name-div {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 12px;
+    float: left;
+    padding-top: 2px;
+}
+
+    .user-name-div .username {
+        color: #003145;
+        font-family: 'HK Grotesk Medium', sans-serif;
+    }
+
+    .user-name-div .usergriddetail {
+        display: block;
+        color: #949eb2;
+        font-family: 'HK Grotesk Light', sans-serif;
+    }
+
+.center-pane {
+    height: 100%;
+}
+
+.grid-view {
+    display: none;
+}
+
+.list-view {
+    display: inline;
+}
+
+.list-view-btn .grid-view {
+    display: inline;
+}
+
+.list-view-btn .list-view {
+    display: none;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+}
+
+@media (min-width: 576px) {
+    .card-columns .card {
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+.user-card .card-up {
+    overflow: hidden;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    padding-left: 9px;
+    padding-right: 0px;
+    padding-top: 4px;
+}
+
+.listactionbtn button:first-child {
+    margin-right: -12px;
+}
+
+.user-card .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #dcdfe5;
+}
+
+    .user-card .avatar img {
+        width: 100%;
+        border:1px solid #dcdfe5
+    }
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.listview {
+    border: 0;
+    height: calc(100% - 116px);
+}
+
+.card-body {
+    border-radius: 0 !important;
+    padding-top: 0px !important;
+}
+
+.card-div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+    .card-div > * {
+        flex: 0 0 218px;
+        margin-right: 7px;
+        margin-bottom: 10px;
+    }
+
+.userprofile .user-name-div {
+    float: inherit !important;
+    display: block;
+}
+
+.card-body-inner {
+    border-top: 1px solid #dcdfe5;
+}
+
+    .card-body-inner ul li span {
+        vertical-align: middle;
+    }
+
+.listactionbtn .btn-icn-trans {
+    font-size: 16px;
+}
+
+.statusround {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    top: 68px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+.user-gridview > .listview, .user-gridview.thumbnail-view > .grid-view-list {
+    display: none;
+}
+
+.user-gridview.thumbnail-view > .listview {
+    display: block;
+    height: 100%;
+    overflow: auto;
+}
+
+.card-div.k-state-selected > .card {
+    border: 1px solid #4a88e9;
+    cursor: pointer;
+}
+
+form fieldset {
+    padding: 18px 7px 0px 8px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: 1px solid #dcdfe5;
+}
+
+    form fieldset legend {
+        font-size: 18px;
+        color: #003145;
+        font-weight: 600;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+.k-dropdown-wrap .k-input {
+    color: #bbc1c4;
+}
+
+.k-dropdown-wrap.k-state-hover {
+    color: #bbc1c4;
+}
+
+.row .col-4.form-group {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.row .col-2 {
+    padding: 0px 8px;
+}
+
+.text-flex {
+    display: flex;
+}
+.candidateprofilephoto{
+    display:flex;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background: #003145;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 36px;
+    color: #fff;
+    font-family: 'HK Grotesk Medium', sans-serif;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}
+.candidateprofilephoto img{
+        border: 1px solid #dcdfe5;
+        border-radius:50%;
+            height: 80px;
+    width: 80px;
+    display:flex
+}
+.uploadphoto .k-upload{
+        display: inline-block;
+    background: transparent;
+}
+.uploadphoto .k-upload .k-button.k-upload-button{
+        border: 0;
+    margin: 0;
+    padding: 0;
+       margin-left: 6px;
+    min-width: 0px;
+    color:#4a88e9;
+    font-size:14px
+}
+.uploadphoto [class^="icon-"]{
+    vertical-align:middle
+}
+.tab-content form .row [class*=col]{
+    padding:0px 10px !important
+}
+/* himeshA start */
+.technology-listview
+{
+    overflow: hidden;
+    margin-top: 15px;
+}
+.technology-listview .k-listview
+{
+    display: block;
+    border: none;
+    height: 100%;
+    overflow: auto;
+    margin: 0 -5px;
+}
+
+.technology-listview .k-listview .list-data
+{
+    display: block;
+    border: 1px solid #dcdfe5;
+    width: 170px;
+    margin: 0 5px 10px 5px;
+    border-radius: 3px;
+    height: 170px;
+    float: left;
+    position: relative;
+}
+.list-data .listview-data
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.list-data p.user-content
+{
+    text-align: center;
+    color: #003145;
+    padding: 5px;
+    font-size: 15px;
+    margin: 0;
+}
+.list-data dl
+{
+    margin: 5px;
+    height: 100%;
+}
+.list-data .fillcolor 
+{
+    height: 70px;
+    width: 70px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    margin: 15px 0px 15px 0;
+    border-radius: 3px;
+    vertical-align: middle;
+    padding: 12px;
+}
+.list-data .fillcolor  h1
+{
+    color: #fff;
+}
+.list-data h5
+{
+    color: #9fa8ba;
+    font-family: 'HK Grotesk Regular';
+    padding: 25px 0px 15px 0;
+}
+.list-data h4{
+        margin: 3px 10px 15px 10px;
+}
+.list-data span{
+    border: 1px solid #e0e0e0;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.list-data .list-footer-data
+{
+    border-top:1px solid #dcdfe5;
+}
+.list-data .location-padding
+{
+        padding: 10px 0 25px 0;
+}
+.list-footer-data a
+{
+    font-size: 14px;
+    color: #2c7eff;
+    font-family: 'HK Grotesk Semibold';
+}
+.list-footer-data a span
+{
+    border: none;
+    font-size: 9px;
+}
+.list-footer-data
+{
+    padding: 5px 0 5px 0;
+}
+.location-padding .k-icon.k-i-marker-pin
+{
+    border:none;
+    font-size:12px;
+}
+.location-padding .k-icon.k-i-clock
+{
+    border:none;
+    font-size:13px;
+}
+.left-img .top-img
+{
+border: 1px solid #dcdfe5;
+    padding: 7px;
+    border-radius: 3px;
+}
+.row{
+    padding:0;
+    margin:0;
+}
+.first-block
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #dcdfe5;
+}
+.top-title-content ul
+{
+    display:inline-flex;
+    margin-top:5px;
+}
+.top-title-content
+{
+    padding-top:10px;
+}
+.top-title-content ul li{
+    font-size:12px;
+    font-family: 'HK Grotesk Semibold';
+    padding: 0 12px 0 0;
+}
+.top-title-content ul li span{
+    font-size: 14px;
+    margin: 0 5px 0px 0;
+    vertical-align:top;
+}
+.k-icon-bulk-search:before
+{
+    content: "\eab8";
+     font: 16px/1 'icomoon';
+}
+.second-block ul li span
+{
+    float:left;
+}
+.user-img
+{
+    border-radius: 100%;
+    
+}
+.user-img img
+{
+border-radius: 100%;
+}
+.height-withpager
+{
+        height: calc(100% - 59px);
+}
+
+/* forum start */
+
+h5.title
+{
+    font-family: HK Grotesk Medium;
+}
+
+.action-div .btn {
+    font-family: 'HK Grotesk Regular';
+}
+.form-group-content ul
+{
+    width: 100%;
+}
+.form-group-content ul.fieldlist li
+{
+        float: left;
+    width: 50%;
+    margin-bottom: 8px;
+}
+.form-group-content ul.fieldlist li label.k-radio-label
+{
+    line-height: inherit;
+    display: inline-block;
+    color: #949eb2;
+    font-family: 'HK Grotesk Regular';
+}
+
+
+.inner-qustblock .question-title
+{
+        font-size: 22px;
+    color: #003145;
+    font-family: 'HK Grotesk Medium';
+}
+.icon-user:before {
+  content: "\eba5";
+}
+.icon-clock:before {
+  content: "\eac8";
+}
+.inner-qustblock ul li
+{
+    display: inline-block;
+    font-size: 16px;
+}
+.inner-qustblock ul li span
+{
+    font-size: 16px;
+    margin-right: 5px;
+}
+.navigate-btn
+{
+margin-top: 15px;
+margin-bottom: 15px;
+}
+.btn-round
+{
+    border-radius: 18px;
+    background-color: #ecf3fd;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0px 15px;
+}
+.inner-qustblock
+{
+margin: 15px 0 0 0;
+}
+.inner-size
+{
+    
+}
+.answer-title
+{
+border:none!important;
+}
+.answer-title p
+{
+    font-size: 26px;
+    color: #003145;
+    font-family: 'HK Grotesk Medium';
+}
+.answer-text
+{
+font-size: 14px!important;
+}
+.navigate-btn p
+{
+        font-size: 15px;
+    line-height: 25px;
+    color: #949eb2;
+    font-family: 'HK Grotesk Regular';
+}
+.inner-size {
+    padding: 10px 10px 10px 30px;
+    display: inline-block;
+}
+.inner-size .name-block
+{
+display: inline-block;
+font-size: 15px;
+}
+.inner-size .name-block span
+{
+    font-size: 16px;
+    margin-right: 8px;
+}
+.qustn-block .que-listing
+{
+overflow: auto;
+}
+.qustn-block .que-listing > li
+{
+    border-bottom: 1px solid #dcdfe5;
+}
+.inner-answer-block .name-block
+{
+display: inline-block;
+font-size: 15px;
+padding: 0 0 10px 0;
+} 
+.inner-answer-block .name-block span
+{
+    font-size: 16px;
+    margin-right: 5px;
+}
+.content-block p
+{
+font-size: 15px;
+line-height: 24px;
+}
+/* forum end */
+
+
+/* himesha end*/

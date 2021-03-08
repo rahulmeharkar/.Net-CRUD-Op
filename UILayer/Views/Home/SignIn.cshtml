@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="mt-container pd-0">
+    <div class="form-login">
+        <form action="/Home/SignIn" method="post">
+        <h5 class="text-left">Sign In</h5>
+        <div class="login-user-screen">
+            <div class="form-group">
+                <input type="text" name="user_email" id="txtUsername" class="mt-input k-textbox" required>
+                <span class="input-bar"></span>
+                <label for="txtUsername">Username</label>
+            </div>
+            <div class="form-group">
+            <input type="password" name="user_password" id="txtPassword" class="mt-input k-textbox" required>
+            <span class="input-bar"></span>
+            <label for="txtPassword">Password</label>
+            </div>
+            <div class="input-check">
+                <div class="check-box">
+                    <input type="checkbox" class="k-checkbox" id="loginremember">
+                    <label class="k-checkbox-label" for="loginremember">Remember Me</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block k-button btn-raised">Sign In</button>
+            </div>
+            <label style="color:red">@ViewBag.msg</label>
+            <div><a class="k-link" href="@Url.Action("RegisterUser","Home")">Sign Up</a></div>
+        </div>
+            </form>
+       </div>
+    </div>

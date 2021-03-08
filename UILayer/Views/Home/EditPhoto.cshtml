@@ -1,0 +1,44 @@
+﻿@model DataAccessLayer.Model.PhotoViewModel
+@{
+    ViewBag.Title = "EditPhoto";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+<div class="mt-container pd-0" id="center1">
+    <div class="form-login">
+        <form action="/Home/EditPhoto" method="post" enctype="multipart/form-data">
+            <h5 class="text-left">Update Data</h5>
+            <div class="form-group">
+                <label for="user_albumid">Album Category:</label>
+                <div class="form-group-content">
+                    <select id="SingleTagMultiselect" name="user_albumid" class="k-selectbox" data-placeholder="Select Category..." style="width:100%;" required>
+                        <option value="2"></option>
+                        <option value="2">Food</option>
+                        <option value="3">Nature</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="useralbumphoto_artist">Artist Name:</label>
+                <div class="form-group-content">
+                    <input type="text" name="useralbumphoto_artist" class="k-textbox" placeholder="Rahul" value="@Model.useralbumphoto_artist" title="textbox" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="useralbumphoto_name">Photo Name:</label>
+                <div class="form-group-content">
+                    <input type="text" name="useralbumphoto_name" class="k-textbox" placeholder="Nature" value="@Model.useralbumphoto_name" title="textbox" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="useralbumphoto_prise">Prise:</label>
+                <div class="form-group-content">
+                    <input type="text" name="useralbumphoto_prise" class="k-textbox" placeholder="500" value="@Model.useralbumphoto_prise" title="textbox" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+

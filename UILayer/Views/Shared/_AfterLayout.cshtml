@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="PhotoGalary">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/AngularJsScript/app.js"></script>
+    <script src="~/Scripts/AngularJsScript/addphoto.js"></script>
+    <link href="~/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/css/font.css" rel="stylesheet" />
+
+    <link href="~/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/css/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/css/styleguide.css" rel="stylesheet" />
+    <!--<link href="../css/drive.css" rel="stylesheet" />
+    <link href="../css/drive_responsive.css" rel="stylesheet" />-->
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/css/kendo.Yellow.css" rel="stylesheet" />
+    <link href="~/css/casepoint.comfortable.css" rel="stylesheet" />
+
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/kendo.all.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
+    <style>
+            #center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+        #Div2{
+              display:none;
+             }
+        #listView {
+            padding: 50px 50px;
+            margin-bottom: -1px;
+            min-height: 510px;
+            padding-left: 50px;
+        }
+
+        .k-listview-content {
+            overflow: hidden;
+        }
+
+        .product {
+            float: left;
+            position: relative;
+            width: 111px;
+            height: 170px;
+            margin: 0 5px;
+            padding: 0;
+        }
+
+            .product img {
+                width: 110px;
+                height: 110px;
+            }
+
+            .product h3 {
+                margin: 0;
+                padding: 3px 5px 0 0;
+                max-width: 96px;
+                overflow: hidden;
+                line-height: 1.1em;
+                font-size: .9em;
+                font-weight: normal;
+                text-transform: uppercase;
+                color: #999;
+            }
+
+            .product p {
+                visibility: hidden;
+            }
+
+            .product:hover p {
+                visibility: visible;
+                position: absolute;
+                width: 110px;
+                height: 110px;
+                top: 0;
+                margin: 0;
+                padding: 0;
+                line-height: 110px;
+                vertical-align: middle;
+                text-align: center;
+                color: #fff;
+                background-color: rgba(0,0,0,0.75);
+                transition: background .2s linear, color .2s linear;
+                -moz-transition: background .2s linear, color .2s linear;
+                -webkit-transition: background .2s linear, color .2s linear;
+                -o-transition: background .2s linear, color .2s linear;
+            }
+
+        .k-listview:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            $("#tabstrip").kendoTabStrip({
+                animation: {
+                    open: {
+                        effects: "fadeIn"
+                    }
+                }
+            });
+
+            $(".files").kendoUpload();
+
+
+        });
+    </script>
+    
+</head>
+<body>
+    <header class="main-header">
+        <nav class="mt-navbar">
+            <div class="nav-left" id="dvLeftMenu" data-role="aratooltipv2">
+                <div class="logo-wrapper">
+                    <img src="~/images/header-logo.png" alt="Casepoint logo" />
+                </div>
+                <ul class="left-menu list-unstyled list-inline">
+                    <li class="separator"></li>
+                    <li class="active project-item"><a class="noPointer ellipsis" title="PhotoGallary">PhotoGallary</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul class="list-inline pages-menu">
+                    @*<li class="navbar-btn"><a class="app-icon" href="/Home/Index">Dashboard</a></li>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+                        <div class="dropdown-menu">
+                            @if (User.IsInRole("Admin"))
+                            {
+                            <a class="dropdown-item" href="/Customer/Index">Dashboard</a>
+                            }
+                             @if (User.Identity.Name == "rahulmeharkar195@gmail.com")
+                             {
+                            @*<a class="dropdown-item" href="#">Add Album</a>*@
+                            <a class="dropdown-item" href="/Home/addPhoto">Add Photo</a>
+                             }
+                            <a class="dropdown-item" href="/Home/SignOut">Sign Out</a>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
+    @*@<nav class="mt-navbar-pages">
+        <!--mobile toggle-->
+        <div class="sm-pages-toggle visible-xs">
+            <a class="pages-menu-toggle">
+                <i class="icon-three-dots" aria-hidden="true"></i>
+                <span>Dashboard</span>
+            </a>
+        </div>
+        <ul class="list-inline pages-menu">
+            <li><a href="/Customer/Index">Dashboard</a></li>
+            @if (User.Identity.Name != "rahulmeharkar195@gmail.com")
+            {
+            <li><button class="btn btn-link" onclick="switchVisible();">My Cart</button></li>
+            }
+            @if (User.Identity.Name == "rahulmeharkar195@gmail.com")
+            {
+            <li><a id="graph" href="#">View Sell Graph</a></li>
+            }
+        </ul>
+    </nav>*@
+    <nav class="mt-navbar-pages" id="nav101">
+        <div id="tabstrip" class="tab-trans">
+            <ul>
+                @if (User.Identity.Name != "rahulmeharkar195@gmail.com")
+                {
+                <li>
+                    <a href="/Customer/Index">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/Customer/CartData">My Cart</a>
+                </li>
+                }
+                @if (User.Identity.Name == "rahulmeharkar195@gmail.com")
+                {
+                    <li>
+                        <a id="1" href="/Home/Index" onclick="active1();">Dashboard</a>
+                    </li>
+                }
+                @if (User.Identity.Name == "rahulmeharkar195@gmail.com")
+                {
+                    <li>
+                          <a id="2" href="/Home/SellDetail" onclick="active2();">View Sell Graph</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        </nav>
+        <div>
+            @RenderBody()
+        </div>
+</body>
+</html>

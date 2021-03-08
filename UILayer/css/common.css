@@ -1,0 +1,168 @@
+﻿.bg-pink{
+            background-color:#ec407a!important;
+            border-color:#ec407a!important;
+        }
+        .bg-blue{
+            background-color:#00839a!important;
+            border-color:#00839a!important;
+        }
+        .bg-green
+        {
+            background-color:#689f38!important;
+            border-color:#689f38!important;
+        }
+        .bg-orange
+        {
+            background-color:#ef6c00!important;
+            border-color:#ef6c00!important;
+        }
+        .bg-violet
+        {
+            background-color:#ab47bc!important;
+            border-color:#ab47bc!important;
+        }
+
+
+        .rightPaneOpen .klistview .k-listview .list-data
+        {
+            width:23%;
+        }
+        .rightPaneOpen .resizeDrawerWidth .klistview .k-listview .list-data {
+            width: 30%;
+        }
+        @media only screen and (max-width: 1024px) {
+            .list-data {
+                width: 30.5%;
+            }
+        }
+
+        .color-bx {
+            margin: 0 10px;
+            width: 12.5%;
+        }
+
+        .color-bx-wrap {
+            height: 50px;
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .color-bx label {
+            margin-top: 10px;
+        }
+
+        .snippet {
+            position: relative;
+            overflow: visible;
+        }
+
+        pre {
+            margin-top: 0;
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            padding: .5em !important;
+            color: #333;
+            background: #f8f8f8;
+            -webkit-text-size-adjust: none;
+        }
+
+        .snippet .button-copy {
+            -webkit-transition: opacity .3s ease-in-out;
+            -o-transition: opacity .3s ease-in-out;
+            transition: opacity .3s ease-in-out;
+            opacity: 0;
+            padding: 2px 6px;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .snippet-tab-html .button-copy,
+        .snippet-tab-js .button-copy {
+            top: 10px;
+            right: 14px;
+        }
+
+        .button-copy {
+            position: relative;
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 20px;
+            color: #333;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: #eee;
+            background-image: linear-gradient(#fcfcfc,#eee);
+            border: 1px solid #d5d5d5;
+            border-radius: 3px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-appearance: none;
+        }
+
+        .snippet:hover .button-copy, .snippet .button-copy:focus {
+            opacity: 1;
+        }
+
+        .clippy {
+            margin-top: -3px;
+            position: relative;
+            top: 3px;
+        }
+
+        .snippet code {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 12px;
+            max-height: 250px;
+            white-space: pre-line !important;
+        }
+
+        .typography li, .button-groups > div {
+            margin-bottom: 10px;
+        }
+
+        .box-border {
+            border: 1px solid #eee;
+            padding: 13px;
+        }
+
+        .notification-box {
+            position: absolute;
+        }
+
+        .notification-alert {
+            display: none;
+        }
+        #myBtn {
+          display: none;
+          position: fixed;
+          bottom: 40px;
+          right: 30px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: #ffd44c;
+          color: #fff;
+          cursor: pointer;
+          padding: 2px 10px 0px 10px;
+          border-radius: 4px;
+        }
+
+        #myBtn:hover {
+          background-color: #003145;
+        }
